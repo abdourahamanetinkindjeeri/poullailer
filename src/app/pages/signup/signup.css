@@ -1,0 +1,655 @@
+* {
+  box-sizing: border-box;
+}
+
+.signup-container {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f766e 0%, #065f46 100%);
+}
+
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.content-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  z-index: 2;
+  padding: 15px;
+}
+
+.signup-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 950px;
+}
+
+/* Left Panel */
+.left-panel {
+  background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+  padding: 3rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  min-height: 500px;
+}
+
+.left-content {
+  text-align: center;
+  width: 100%;
+}
+
+.logo-container {
+  margin-bottom: 1.5rem;
+}
+
+.logo-circle {
+  width: 70px;
+  height: 70px;
+  background: white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-name {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.welcome-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.welcome-text {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.btn-sign-up {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 0.5rem 3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-sign-up:hover {
+  background: white;
+  color: #047857;
+}
+
+.footer-links {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.footer-links .link {
+  color: white;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.separator {
+  opacity: 0.5;
+}
+
+/* Right Panel */
+.right-panel {
+  background: white;
+  padding: 2.5rem 2rem;
+}
+
+.right-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.title {
+  color: #047857;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 0.875rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  background-color: #d1fae5;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.1);
+}
+
+.form-input::placeholder {
+  color: #6b7280;
+}
+
+.submit-container {
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.btn-signup {
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #047857;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.btn-signup.hovered {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(4, 120, 87, 0.3);
+}
+
+.signin-text {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.signin-link {
+  color: #047857;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signin-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .signup-card {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 767px) {
+  .left-panel {
+    min-height: 280px;
+    padding: 2rem 1.5rem;
+  }
+
+  .logo-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logo-circle svg {
+    width: 35px;
+    height: 35px;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .welcome-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .welcome-text {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .btn-sign-up {
+    padding: 0.5rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-links {
+    font-size: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .footer-links .link {
+    margin: 0 0.25rem;
+  }
+
+  .right-panel {
+    padding: 2rem 1.5rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .form-input {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.75rem;
+  }
+
+  .btn-signup {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .signin-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .content-wrapper {
+    padding: 10px;
+  }
+
+  .signup-card {
+    border-radius: 16px;
+  }
+
+  .left-panel {
+    min-height: 230px;
+    padding: 1.5rem 1rem;
+  }
+
+  .logo-container {
+    margin-bottom: 1rem;
+  }
+
+  .logo-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo-circle svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-name {
+    font-size: 0.9rem;
+  }
+
+  .welcome-title {
+    font-size: 1.1rem;
+  }
+
+  .welcome-text {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .btn-sign-up {
+    padding: 0.4rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    font-size: 0.7rem;
+  }
+
+  .right-panel {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.7rem;
+  }
+
+  .form-input {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .submit-container {
+    margin-top: 1rem;
+  }
+
+  .btn-signup {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .signin-text {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .left-panel {
+    min-height: 170px;
+    padding: 1rem 0.5rem;
+  }
+
+  .logo-container {
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-circle {
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo-circle svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .brand-name {
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .welcome-title {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .welcome-text {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+
+  .btn-sign-up {
+    padding: 0.35rem 1.25rem;
+    font-size: 0.75rem;
+  }
+
+  .footer-links {
+    font-size: 0.65rem;
+    margin-top: 0.75rem;
+  }
+
+  .right-panel {
+    padding: 1rem 0.5rem;
+  }
+
+  .title {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.65rem;
+  }
+
+  .form-input {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .submit-container {
+    margin-top: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .btn-signup {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .signin-text {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .content-wrapper {
+    padding: 5px;
+  }
+
+  .signup-card {
+    border-radius: 12px;
+  }
+
+  .left-panel {
+    min-height: 150px;
+    padding: 0.75rem 0.4rem;
+  }
+
+  .logo-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-circle svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .brand-name {
+    font-size: 0.8rem;
+  }
+
+  .welcome-title {
+    font-size: 0.95rem;
+  }
+
+  .welcome-text {
+    font-size: 0.65rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .btn-sign-up {
+    padding: 0.3rem 1rem;
+    font-size: 0.7rem;
+  }
+
+  .footer-links {
+    font-size: 0.6rem;
+    margin-top: 0.6rem;
+  }
+
+  .right-panel {
+    padding: 0.75rem 0.4rem;
+  }
+
+  .title {
+    font-size: 1.05rem;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.6rem;
+  }
+
+  .form-input {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.7rem;
+  }
+
+  .submit-container {
+    margin-top: 0.75rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .btn-signup {
+    padding: 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  .signin-text {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .content-wrapper {
+    padding: 3px;
+    min-height: 100vh;
+  }
+
+  .signup-card {
+    border-radius: 10px;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+
+  .left-panel {
+    min-height: 130px;
+    padding: 0.6rem 0.3rem;
+  }
+
+  .logo-container {
+    margin-bottom: 0.3rem;
+  }
+
+  .logo-circle {
+    width: 38px;
+    height: 38px;
+  }
+
+  .logo-circle svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .brand-name {
+    font-size: 0.75rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .welcome-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .welcome-text {
+    font-size: 0.6rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn-sign-up {
+    padding: 0.25rem 0.85rem;
+    font-size: 0.65rem;
+    border-width: 1.5px;
+  }
+
+  .footer-links {
+    font-size: 0.55rem;
+    margin-top: 0.5rem;
+  }
+
+  .footer-links .link {
+    margin: 0 0.2rem;
+  }
+
+  .right-panel {
+    padding: 0.6rem 0.3rem;
+  }
+
+  .title {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.65rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.55rem;
+  }
+
+  .form-input {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.65rem;
+    border-radius: 40px;
+  }
+
+  .submit-container {
+    margin-top: 0.65rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .btn-signup {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 40px;
+  }
+
+  .signin-text {
+    font-size: 0.65rem;
+  }
+}

@@ -1,0 +1,217 @@
+<div class="enclos-grid">
+  @for (e of enclosList; track e.id) {
+    <div class="enclos-card">
+      <div class="card-header">
+        <i class="fas fa-warehouse"></i>
+        <h3>{{ e.nom }}</h3>
+      </div>
+
+      <div class="occupation-container">
+        <div class="occupation-circle">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle class="occupation-bg" cx="65" cy="65" r="55"></circle>
+            <circle
+              class="occupation-progress"
+              cx="65"
+              cy="65"
+              r="55"
+              [attr.stroke-dasharray]="345.58"
+              [attr.stroke-dashoffset]="345.58 - (345.58 * getOccupationRate(e) / 100)">
+            </circle>
+          </svg>
+          <div class="occupation-text">
+            <span class="occupation-percentage">
+              {{ getOccupationRate(e) }}<span class="occupation-percentage-symbol">%</span>
+            </span>
+            <span class="occupation-label">{{ e.capaciteOccupe }}/{{ e.capaciteMax }}</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <span class="stat-value">
+              {{ e.capaciteMax - e.capaciteOccupe }}<span class="stat-value-symbol">places</span>
+            </span>
+            <span class="stat-label">Disponible</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <p><strong>Type :</strong> <span>{{ e.type }}</span></p>
+        <p>
+          <strong>Statut :</strong>
+          <span [ngClass]="e.isActive ? 'status-actif' : 'status-inactif'">
+            {{ e.isActive ? 'ACTIF' : 'INACTIF' }}
+          </span>
+        </p>
+      </div>
+
+      <div class="card-footer">
+        <button type="button" class="btn-action btn-oeufs" (click)="openModal('Collecter œufs', e.id)">
+          <i class="fas fa-egg"></i> Collecter œufs
+        </button>
+        <button type="button" class="btn-action btn-aliment" (click)="openModal('Distribuer Aliment', e.id)">
+          <i class="fas fa-seedling"></i> Distribuer Aliment
+        </button>
+        <button type="button" class="btn-action btn-mort" (click)="openModal('Mortalité poule', e.id)">
+          <i class="fas fa-skull"></i> Mortalité poule
+        </button>
+        <button type="button" class="btn-action btn-modifier" (click)="openModal('Modifier', e.id)">
+          <i class="fas fa-pen"></i> Modifier
+        </button>
+      </div>
+    </div>
+  }
+</div>
+
+@if (showModal) {
+  <div class="modal" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>{{ modalTitle }}</h3>
+
+      @if (modalTitle === 'Collecter œufs') {
+        <div class="oeuf-inputs">
+          <!-- Œufs PETIT -->
+          <div class="oeuf-section petit-section">
+            <div class="section-header">
+              <div class="egg-icon petit-icon">
+                <i class="fas fa-egg"></i>
+              </div>
+              <span class="section-title">ŒUFS PETIT</span>
+            </div>
+
+            <div class="input-row">
+              <div class="input-with-label">
+                <label for="plateauxPetit">
+                  <i class="fas fa-layer-group"></i> Plateaux
+                </label>
+                <input
+                  id="plateauxPetit"
+                  type="number"
+                  min="0"
+                  [ngModel]="getPlateaux(oeufsPetit)"
+                  (ngModelChange)="oeufsPetit = $event * 30 + getReste(oeufsPetit)"
+                  placeholder="0" />
+              </div>
+
+              <div class="input-with-label">
+                <label for="restePetit">
+                  <i class="fas fa-egg"></i> Œufs
+                </label>
+                <input
+                  id="restePetit"
+                  type="number"
+                  min="0"
+                  max="29"
+                  [ngModel]="getReste(oeufsPetit)"
+                  (ngModelChange)="oeufsPetit = getPlateaux(oeufsPetit) * 30 + $event"
+                  placeholder="0" />
+              </div>
+            </div>
+
+            @if (oeufsPetit > 0) {
+              <div class="total-badge petit-badge">
+                Total: <strong>{{ oeufsPetit }}</strong> œufs
+              </div>
+            }
+          </div>
+
+          <!-- Œufs GRAND -->
+          <div class="oeuf-section grand-section">
+            <div class="section-header">
+              <div class="egg-icon grand-icon">
+                <i class="fas fa-egg"></i>
+              </div>
+              <span class="section-title">ŒUFS GRAND</span>
+            </div>
+
+            <div class="input-row">
+              <div class="input-with-label">
+                <label for="plateauxGrand">
+                  <i class="fas fa-layer-group"></i> Plateaux
+                </label>
+                <input
+                  id="plateauxGrand"
+                  type="number"
+                  min="0"
+                  [ngModel]="getPlateaux(oeufsGrand)"
+                  (ngModelChange)="oeufsGrand = $event * 30 + getReste(oeufsGrand)"
+                  placeholder="0" />
+              </div>
+
+              <div class="input-with-label">
+                <label for="resteGrand">
+                  <i class="fas fa-egg"></i> Œufs
+                </label>
+                <input
+                  id="resteGrand"
+                  type="number"
+                  min="0"
+                  max="29"
+                  [ngModel]="getReste(oeufsGrand)"
+                  (ngModelChange)="oeufsGrand = getPlateaux(oeufsGrand) * 30 + $event"
+                  placeholder="0" />
+              </div>
+            </div>
+
+            @if (oeufsGrand > 0) {
+              <div class="total-badge grand-badge">
+                Total: <strong>{{ oeufsGrand }}</strong> œufs
+              </div>
+            }
+          </div>
+
+          <!-- Total général -->
+          @if (getTotalOeufs() > 0) {
+            <div class="total-general">
+              <div class="total-header">
+                <i class="fas fa-calculator"></i>
+                <span>TOTAL GÉNÉRAL</span>
+              </div>
+              <div class="total-content">
+                <div class="total-item">
+                  <i class="fas fa-layer-group"></i>
+                  <span>{{ getPlateaux(getTotalOeufs()) }} plateaux</span>
+                </div>
+                <div class="total-item">
+                  <i class="fas fa-egg"></i>
+                  <span>{{ getReste(getTotalOeufs()) }} œufs</span>
+                </div>
+                <div class="total-sum">
+                  {{ getTotalOeufs() }} œufs
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Distribuer Aliment -->
+      @if (modalTitle === 'Distribuer Aliment') {
+        <label for="inputField">Quantité (kg) :</label>
+        <input id="inputField" type="number" min="0" [(ngModel)]="inputValue" placeholder="Ex: 50" />
+      }
+
+      <!-- Mortalité poule -->
+      @if (modalTitle === 'Mortalité poule') {
+        <label for="inputField">Nombre de poules :</label>
+        <input id="inputField" type="number" min="0" [(ngModel)]="inputValue" placeholder="Ex: 2" />
+
+        <label for="dateField">Date :</label>
+        <input id="dateField" type="date" [(ngModel)]="mortalityDate" />
+      }
+
+      <!-- Modifier -->
+      @if (modalTitle === 'Modifier') {
+        <label for="inputField">Nouveau nom :</label>
+        <input id="inputField" type="text" [(ngModel)]="inputValue" placeholder="Ex: Enclos E" />
+      }
+
+      <div class="modal-actions">
+        <button type="button" class="btn-confirm" (click)="submitModal()"></button>
+        <button type="button" class="btn-cancel" (click)="closeModal()"></button>
+      </div>
+    </div>
+  </div>
+}

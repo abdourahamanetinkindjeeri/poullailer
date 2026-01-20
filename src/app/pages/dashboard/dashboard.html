@@ -1,0 +1,73 @@
+<!-- HEADER -->
+<header class="header">
+  <!-- Bouton hamburger visible uniquement sur mobile -->
+  <div class="menu-toggle d-md-none" (click)="toggleSidebarMobile()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <!-- Titre -->
+  <div class="greeting">Gestion de stock</div>
+
+  <!-- Actions -->
+  <div class="header-actions">
+    <div class="icon-btn theme-toggle" (click)="toggleTheme()">
+      <i class="fas fa-moon"></i>
+    </div>
+  </div>
+</header>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+  <!-- SIDEBAR -->
+  <aside class="sidebar"
+         [class.collapsed]="collapsed"
+         [class.open]="isMobileOpen">
+    <app-sidebar></app-sidebar>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" [class.expanded]="!collapsed && !isMobileOpen">
+    <app-content></app-content>
+  </main>
+</div>
+
+<!-- OVERLAY MOBILE -->
+@if(isMobileOpen){
+  <div class="overlay d-md-none" (click)="toggleSidebarMobile()"></div>
+}
+
+
+
+<!--<div class="dashboard-container d-flex overflow-hidden">-->
+
+<!--  <app-sidebar-->
+<!--    class="sidebar-container bg-dark text-white"-->
+<!--    [class.collapsed]="!isMobile && collapsed"-->
+<!--    [class.sidebar-open]="isMobile && sidebarOpen">-->
+<!--  </app-sidebar>-->
+
+<!--  @if (isMobile && sidebarOpen) {-->
+<!--    <div class="sidebar-overlay" (click)="closeSidebar()"></div>-->
+<!--  }-->
+
+<!--  <div class="main-content d-flex flex-column flex-grow-1"-->
+<!--       [style.margin-left]="isMobile ? '0' : (collapsed ? '80px' : '280px')">-->
+
+<!--    <header class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-3">-->
+<!--      <app-header-->
+<!--        class="w-100"-->
+<!--        (toggleSidebar)="toggleSidebar()"-->
+<!--        (toggleTheme)="toggleTheme()">-->
+<!--      </app-header>-->
+<!--    </header>-->
+
+<!--    <main class="content-wrapper flex-grow-1 overflow-auto p-3">-->
+<!--      <app-content></app-content>-->
+<!--    </main>-->
+
+<!--    <footer class="footer mt-auto py-3 bg-white border-top px-3">-->
+<!--      <app-footer></app-footer>-->
+<!--    </footer>-->
+
+<!--  </div>-->
+<!--</div>-->

@@ -1,0 +1,159 @@
+<div class="signup-container">
+  <canvas #particleCanvas class="particle-canvas"></canvas>
+
+  <div class="content-wrapper">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+          <div class="signup-card">
+            <div class="row g-0">
+              <!-- Left Panel -->
+              <div class="col-md-5 left-panel">
+                <div class="left-content">
+                  <div class="logo-container">
+                    <div class="logo-circle">
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C12 2 8 6 8 10C8 12.21 9.79 14 12 14C14.21 14 16 12.21 16 10C16 6 12 2 12 2Z"
+                              fill="#047857" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 14V22" stroke="#047857" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M8 18H16" stroke="#047857" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <h4 class="brand-name">blueflame</h4>
+                  <h3 class="welcome-title">Hello, Friend!</h3>
+                  <p class="welcome-text">
+                    Enter your personal details<br />
+                    and start your journey with us
+                  </p>
+                  <button class="btn-sign-up" (click)="goToLogin()">SIGN IN</button>
+                  <div class="footer-links">
+                    <a href="#" class="link">PRIVACY POLICY</a>
+                    <span class="separator">|</span>
+                    <a href="#" class="link">TERMS OF USE</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Panel -->
+              <div class="col-md-7 right-panel">
+                <div class="right-content">
+                  <h2 class="title">Create Account</h2>
+                  <p class="subtitle">Fill in the information below to get started</p>
+
+                  <div class="form-container">
+                    <!-- Nom et Prénom -->
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-input"
+                            placeholder="Nom"
+                            [(ngModel)]="formData.nom"
+                            name="nom"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-input"
+                            placeholder="Prénom"
+                            [(ngModel)]="formData.prenom"
+                            name="prenom"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Téléphone et Email -->
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <input
+                            type="tel"
+                            class="form-input"
+                            placeholder="Téléphone"
+                            [(ngModel)]="formData.telephone"
+                            name="telephone"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <input
+                            type="email"
+                            class="form-input"
+                            placeholder="Email"
+                            [(ngModel)]="formData.email"
+                            name="email"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Adresse -->
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-input"
+                        placeholder="Adresse"
+                        [(ngModel)]="formData.adresse"
+                        name="adresse"
+                      />
+                    </div>
+
+                    <!-- Code PIN et Mot de passe -->
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <input
+                            type="password"
+                            class="form-input"
+                            placeholder="Code PIN"
+                            [(ngModel)]="formData.codePin"
+                            name="codePin"
+                            maxlength="6"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <input
+                            type="password"
+                            class="form-input"
+                            placeholder="Mot de passe"
+                            [(ngModel)]="formData.motDePasse"
+                            name="motDePasse"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="submit-container">
+                      <button
+                        class="btn-signup"
+                        (click)="onSignup()"
+                        (mouseenter)="isHovered = true"
+                        (mouseleave)="isHovered = false"
+                        [class.hovered]="isHovered"
+                      >
+                        SIGN UP
+                      </button>
+                    </div>
+
+                    <p class="signin-text">
+                      Already have an account? <a [routerLink]="['/login']"  class="signin-link" (click)="goToLogin()">sign in</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

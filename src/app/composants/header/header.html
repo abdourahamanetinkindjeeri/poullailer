@@ -1,0 +1,22 @@
+<header class="header">
+  <button type="button" class="menu-toggle" (click)="toggleSidebar.emit()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <div class="search-bar">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Rechercher..." />
+  </div>
+
+  <div class="header-actions">
+    <div class="greeting">Bonjour Jeeri </div>
+
+    <button class="icon-btn theme-toggle" (click)="toggleTheme.emit()">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <button class="icon-btn">
+      <i class="fas fa-bell"></i>
+    </button>
+  </div>
+</header>
