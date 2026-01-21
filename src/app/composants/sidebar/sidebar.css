@@ -1,0 +1,24 @@
+.pointer {
+  cursor: pointer;
+}
+
+.sidebar-nav {
+  padding-bottom: 12px;
+}
+
+.transition {
+  transition: transform 0.25s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.sidebar-fixed {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 250px; /* ou votre largeur */
+  height: 100dvh; /* Important */
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}

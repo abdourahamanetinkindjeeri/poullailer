@@ -25,7 +25,7 @@ export interface InterfaceEnclos {
 export class Enclos {
   enclosList: InterfaceEnclos[] = [
     { id: 1, nom: 'Enclos A', capaciteMax: 2500, capaciteOccupe: 2450, type: 'Bovins', isActive: true },
-    { id: 2, nom: 'Enclos B', capaciteMax: 20, capaciteOccupe: 12, type: 'Ovins', isActive: true },
+    { id: 2, nom: 'Enclos B', capaciteMax: 11000, capaciteOccupe: 12, type: 'Ovins', isActive: true },
     { id: 3, nom: 'Enclos C', capaciteMax: 35, capaciteOccupe: 30, type: 'Volaille', isActive: false },
     { id: 4, nom: 'Enclos D', capaciteMax: 12, capaciteOccupe: 9, type: 'Caprins', isActive: true },
   ];

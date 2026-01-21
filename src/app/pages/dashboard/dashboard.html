@@ -1,14 +1,11 @@
 <!-- HEADER -->
 <header class="header">
-  <!-- Bouton hamburger visible uniquement sur mobile -->
   <div class="menu-toggle d-md-none" (click)="toggleSidebarMobile()">
     <i class="fas fa-bars"></i>
   </div>
 
-  <!-- Titre -->
   <div class="greeting">Gestion de stock</div>
 
-  <!-- Actions -->
   <div class="header-actions">
     <div class="icon-btn theme-toggle" (click)="toggleTheme()">
       <i class="fas fa-moon"></i>
@@ -18,56 +15,78 @@
 
 <!-- DASHBOARD -->
 <div class="dashboard">
+
   <!-- SIDEBAR -->
   <aside class="sidebar"
          [class.collapsed]="collapsed"
          [class.open]="isMobileOpen">
-    <app-sidebar></app-sidebar>
+     <app-sidebar></app-sidebar>
   </aside>
 
-  <!-- MAIN CONTENT -->
-  <main class="main-content" [class.expanded]="!collapsed && !isMobileOpen">
-    <app-content></app-content>
-  </main>
+  <!-- CONTENT AREA -->
+  <div class="content-area">
+    <main class="main-content">
+       <app-content></app-content>
+
+      <!-- Contenu de test avec défilement -->
+<!--      <div class="content-container">-->
+<!--        <div class="card mb-3">-->
+<!--          <h3>Enclos A</h3>-->
+<!--          <p>98% - 2450/2500</p>-->
+<!--          <p>50 places disponibles</p>-->
+<!--          <p><strong>Type :</strong> Actif</p>-->
+<!--          <p><strong>Statut :</strong> Collecter œufs | Mortalité poule</p>-->
+<!--        </div>-->
+
+<!--        <div class="card mb-3">-->
+<!--          <h3>Enclos B</h3>-->
+<!--          <p>0% - 2211000</p>-->
+<!--          <p>10988 places disponibles</p>-->
+<!--          <p><strong>Type :</strong> Ovis</p>-->
+<!--          <p><strong>Statut :</strong> Collecter œufs | Mortalité poule</p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Ajoutez plus de contenu pour voir le défilement &ndash;&gt;-->
+<!--        <div class="card mb-3">-->
+<!--          <h3>Enclos C</h3>-->
+<!--          <p>86% - 30/35</p>-->
+<!--          <p>5 places disponibles</p>-->
+<!--          <p><strong>Type :</strong> Volaille</p>-->
+<!--          <p><strong>Statut :</strong> INACTIF</p>-->
+<!--        </div>-->
+
+<!--        <div class="card mb-3">-->
+<!--          <h3>Enclos D</h3>-->
+<!--          <p>75% - 9/12</p>-->
+<!--          <p>3 places disponibles</p>-->
+<!--          <p><strong>Type :</strong> Caprins</p>-->
+<!--          <p><strong>Statut :</strong> ACTIF</p>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Plus de contenu pour le défilement &ndash;&gt;-->
+<!--        <div *ngFor="let i of [1,2,3,4,5]" class="card mb-3">-->
+<!--          <h3>Enclos supplémentaire {{i}}</h3>-->
+<!--          <p>Contenu pour tester le défilement avec footer fixe</p>-->
+<!--        </div>-->
+<!--      </div>-->
+    </main>
+
+    <!-- FOOTER FIXE -->
+    <footer class="footer">
+      <div class="footer-content">
+        <span>Tous droits réservés</span>
+        <span>•</span>
+        <span>Aide</span>
+        <span>•</span>
+        <span>Contact</span>
+        <span>•</span>
+        <span>Documentation</span>
+      </div>
+    </footer>
+  </div>
 </div>
 
 <!-- OVERLAY MOBILE -->
-@if(isMobileOpen){
+@if (isMobileOpen) {
   <div class="overlay d-md-none" (click)="toggleSidebarMobile()"></div>
 }
-
-
-
-<!--<div class="dashboard-container d-flex overflow-hidden">-->
-
-<!--  <app-sidebar-->
-<!--    class="sidebar-container bg-dark text-white"-->
-<!--    [class.collapsed]="!isMobile && collapsed"-->
-<!--    [class.sidebar-open]="isMobile && sidebarOpen">-->
-<!--  </app-sidebar>-->
-
-<!--  @if (isMobile && sidebarOpen) {-->
-<!--    <div class="sidebar-overlay" (click)="closeSidebar()"></div>-->
-<!--  }-->
-
-<!--  <div class="main-content d-flex flex-column flex-grow-1"-->
-<!--       [style.margin-left]="isMobile ? '0' : (collapsed ? '80px' : '280px')">-->
-
-<!--    <header class="navbar navbar-expand-lg navbar-light bg-white border-bottom px-3">-->
-<!--      <app-header-->
-<!--        class="w-100"-->
-<!--        (toggleSidebar)="toggleSidebar()"-->
-<!--        (toggleTheme)="toggleTheme()">-->
-<!--      </app-header>-->
-<!--    </header>-->
-
-<!--    <main class="content-wrapper flex-grow-1 overflow-auto p-3">-->
-<!--      <app-content></app-content>-->
-<!--    </main>-->
-
-<!--    <footer class="footer mt-auto py-3 bg-white border-top px-3">-->
-<!--      <app-footer></app-footer>-->
-<!--    </footer>-->
-
-<!--  </div>-->
-<!--</div>-->
